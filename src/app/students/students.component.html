@@ -1,0 +1,36 @@
+<p>students component works!</p>
+<!-- {{student}} This no longer works bc we changed the student.ts to have a student object or something like that-->
+<!-- <h2>{{student.name}} Details</h2>
+<div><h3><span>id: </span>{{student.id}}</h3></div>
+<div><h3><span>major: </span>{{student.major}}</h3></div>
+<div><h3><span>super cool: </span>{{student.isCool}}</h3></div>
+
+<div>
+    <label>Change Major:
+        <input [(ngModel)]="student.major" placeholder="new major"/>
+    </label>
+</div> -->
+
+<!-- above is the old page layout when I hard coded one student inside -->
+<h2>Students</h2>
+<ul class="students">
+    <li *ngFor="let student of students" 
+    [class.selected]="student === selectedStudent"
+    (click)="onSelect(student)">
+        <span class="badge">{{student.id}}</span>
+        {{student.name}} |
+        <i>{{student.major}}</i> |
+        {{student.isCool}} <!--Not sure how to display this yet-->
+    </li>
+</ul>
+
+<div *ngIf="selectedStudent">
+    <h2>{{selectedStudent.name}} Details</h2>
+    <div><span>id: </span>{{selectedStudent.id}}</div>
+    <div>
+        <label>Change Major:
+            <input [(ngModel)]="selectedStudent.major" placeholder="new major"/>
+        </label>
+    </div>
+</div>
+
